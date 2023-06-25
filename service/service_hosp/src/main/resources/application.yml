@@ -1,0 +1,21 @@
+server:
+  port: 8201 #服务端口
+
+spring:
+  application:
+    name: service-hosp
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.27.15:3306/yygh_hosp?characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+  jackson: #返回json的全局时间格式
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+16
+
+#设置指定路径的日志级别
+logging:
+  level:
+    com.atguigu.yygh.hosp.mapper: DEBUG
