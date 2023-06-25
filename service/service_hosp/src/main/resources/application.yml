@@ -13,7 +13,7 @@ spring:
     password: root
   jackson: #返回json的全局时间格式
     date-format: yyyy-MM-dd HH:mm:ss
-    time-zone: GMT+16
+    time-zone: GMT+8
 
 #设置指定路径的日志级别
 logging:
