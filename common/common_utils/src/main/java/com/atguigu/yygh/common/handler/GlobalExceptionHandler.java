@@ -18,20 +18,18 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public R error(Exception e) {
-        e.printStackTrace();
-        log.error(e.getMessage());
+        log.error(ExceptionUtil.getMessage(e));
         return R.error().message(e.getMessage());
     }
 
     @ExceptionHandler(NullPointerException.class)
     public R error(NullPointerException e) {
-        e.printStackTrace();
+        log.error(ExceptionUtil.getMessage(e));
         return R.error().message("空指针异常");
     }
 
     @ExceptionHandler(YyghException.class)
     public R error(YyghException e) {
-        e.printStackTrace();
         log.error(ExceptionUtil.getMessage(e));
         return R.error().code(e.getCode()).message(e.getMessage());
     }

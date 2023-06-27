@@ -28,6 +28,7 @@ import java.util.Random;
 @Api(tags = "医院设置接口")
 @RestController
 @RequestMapping("/admin/hosp/hospitalSet")
+@CrossOrigin
 public class HospitalSetController {
 
     @Autowired
@@ -57,7 +58,7 @@ public class HospitalSetController {
     }
 
     @ApiOperation("分页设置列表")
-    @GetMapping("/queryPageList/{pageNum}/{pageSize}")
+    @GetMapping("/{pageNum}/{pageSize}")
     public R queryPageList(
             @ApiParam(name = "pageNum",value = "当前页码",required = true)
             @PathVariable Long pageNum,
@@ -97,7 +98,7 @@ public class HospitalSetController {
     }
 
     @ApiOperation("根据ID查询设置")
-    @GetMapping("/querySet/{id}")
+    @GetMapping("/{id}")
     public R querySet(@ApiParam("医院设置ID") @PathVariable Long id) {
         //int a = 10 / 0;
         HospitalSet hospitalSet = hospitalSetService.getById(id);
@@ -108,7 +109,7 @@ public class HospitalSetController {
     }
 
     @ApiOperation("根据ID修改设置")
-    @PutMapping("/updateSet")
+    @PutMapping("/update")
     public R update(@ApiParam("医院设置ID") @RequestBody HospitalSet hospitalSet) {
         return hospitalSetService.updateById(hospitalSet) ? R.ok() : R.error();
     }
@@ -120,7 +121,7 @@ public class HospitalSetController {
     }
 
     @ApiOperation("锁定与解锁")
-    @PutMapping("/lock/{id}/{status}")
+    @PutMapping("/updateStatus/{id}/{status}")
     public R lock(@ApiParam("医院设置ID") @PathVariable Long id,
                   @ApiParam("状态") @PathVariable Integer status) {
         //执行修改动作
