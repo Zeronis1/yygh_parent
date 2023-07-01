@@ -1,6 +1,7 @@
 package com.atguigu.yygh.hosp.controller;
 
 import com.atguigu.yygh.common.exception.YyghException;
+import com.atguigu.yygh.common.result.ResultCodeEnum;
 import com.atguigu.yygh.common.util.MD5;
 import com.atguigu.yygh.common.utils.R;
 import com.atguigu.yygh.hosp.service.HospitalSetService;
@@ -103,7 +104,7 @@ public class HospitalSetController {
         //int a = 10 / 0;
         HospitalSet hospitalSet = hospitalSetService.getById(id);
         if (id < 0) {
-            throw new YyghException(20001,"id不能为负数");
+            throw new YyghException(ResultCodeEnum.FAIL);
         }
         return R.ok().data("item",hospitalSet);
     }
